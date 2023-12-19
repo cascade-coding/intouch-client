@@ -16,12 +16,6 @@ const DialogPostContent = ({ post }: { post: PostType }) => {
       setReadMore(!readMore);
     }
   };
-
-  const renderCustomThumbs = (children: React.ReactChild[]) =>
-    children.map((thumb) => (
-      <div className="first:h-10 first:object-cover">{thumb}</div>
-    ));
-
   return (
     <>
       <div className="mb-4">
@@ -56,17 +50,13 @@ const DialogPostContent = ({ post }: { post: PostType }) => {
       )}
 
       {post.post_images.length > 0 && (
-        <Carousel
-          infiniteLoop
-          renderThumbs={renderCustomThumbs}
-          showThumbs={post.post_images.length !== 1}
-        >
+        <Carousel infiniteLoop showThumbs={false} swipeable showArrows>
           {post.post_images.map((item) => (
             <div key={item.id} className="">
               <img
                 src={`https://res.cloudinary.com/dsmyfgxd1/${item.image}`}
                 alt="Post img"
-                className=""
+                className="w-full max-w-full h-auto"
               />
             </div>
           ))}
