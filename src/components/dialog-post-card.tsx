@@ -8,16 +8,12 @@ import {
 import { Button } from "@/components/ui/button";
 import numeral from "numeral";
 import useTogglePostLike from "@/hooks/useTogglePostLike";
-import PostContent from "./post-content";
+import DialogPostContent from "./dialog-post-content";
 
-const PostCard = ({
+const DialogPostCard = ({
   post,
-  setPostDialog,
-  setPost,
 }: {
   post: PostType;
-  setPostDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setPost: React.Dispatch<React.SetStateAction<PostType | null>>;
 }) => {
   const [{ liked, like_counts }, setPostLikeInfo] = useState({
     liked: post.user_liked,
@@ -26,8 +22,8 @@ const PostCard = ({
   const { togglePostLike } = useTogglePostLike();
 
   return (
-    <div className="bg-background border rounded-sm p-4 shadow-md mt-6 first:mt-0">
-      <PostContent post={post} />
+    <div className="bg-background rounded-sm p-4 shadow-md mt-6 first:mt-0">
+      <DialogPostContent post={post} />
 
       <div className="mt-4 flex gap-4 justify-between">
         <Button
@@ -56,9 +52,6 @@ const PostCard = ({
         <Button
           variant="outline"
           className="flex items-center justify-center gap-2  flex-1"
-          onClick={() => {
-            setPostDialog(true), setPost(post);
-          }}
         >
           <MdOutlineModeComment /> Comment
         </Button>
@@ -67,4 +60,4 @@ const PostCard = ({
   );
 };
 
-export default PostCard;
+export default DialogPostCard;
