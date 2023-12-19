@@ -25,7 +25,7 @@ const PostDialog = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
-        className="sm:max-w-4xl overflow-y-auto h-screen pt-16 mt-4"
+        className="sm:max-w-4xl overflow-auto h-screen pt-16 mt-4"
         id="post-dialog"
       >
         {post && <DialogPostCard post={post} />}

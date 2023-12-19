@@ -17,6 +17,11 @@ const DialogPostContent = ({ post }: { post: PostType }) => {
     }
   };
 
+  const renderCustomThumbs = (children: React.ReactChild[]) =>
+    children.map((thumb) => (
+      <div className="first:h-10 first:object-cover">{thumb}</div>
+    ));
+
   return (
     <>
       <div className="mb-4">
@@ -51,7 +56,11 @@ const DialogPostContent = ({ post }: { post: PostType }) => {
       )}
 
       {post.post_images.length > 0 && (
-        <Carousel infiniteLoop>
+        <Carousel
+          infiniteLoop
+          renderThumbs={renderCustomThumbs}
+          showThumbs={post.post_images.length !== 1}
+        >
           {post.post_images.map((item) => (
             <div key={item.id} className="">
               <img
