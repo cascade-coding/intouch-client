@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function useGetHomePosts() {
-  const posts = useSelector((state: RootState) => state.posts.values);
+  const { posts } = useSelector((state: RootState) => state.posts);
 
   const ran = useRef(false);
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function useGetHomePosts() {
       (async () => {
         try {
           const { data } = await privateApi.get("/home/posts/");
-          dispatch(setPosts(data.results));
+          dispatch(setPosts(data));
         } catch (error) {
           console.log(error);
         }

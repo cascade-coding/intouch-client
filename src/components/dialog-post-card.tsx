@@ -11,9 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPostLikeInfo } from "@/features/postsSlice";
 import { RootState } from "@/app/store";
 
-const DialogPostCard = ({ dialogPostId }: { dialogPostId: string }) => {
+const DialogPostCard = () => {
   const dispatch = useDispatch();
-  const posts = useSelector((state: RootState) => state.posts.values);
+  const {
+    posts: { results: posts },
+    dialogPostId,
+  } = useSelector((state: RootState) => state.posts);
+
   const post = posts.find((item) => item.id === dialogPostId);
 
   const { togglePostLike } = useTogglePostLike();
@@ -23,7 +27,6 @@ const DialogPostCard = ({ dialogPostId }: { dialogPostId: string }) => {
   return (
     <div className="bg-background rounded-sm p-4 shadow-md mt-6 first:mt-0">
       <DialogPostContent post={post} />
-
       <div className="mt-4 flex gap-4 justify-between">
         <Button
           variant="outline"
@@ -43,8 +46,6 @@ const DialogPostCard = ({ dialogPostId }: { dialogPostId: string }) => {
           <MdOutlineModeComment /> Comment
         </Button>
       </div>
-
-
       comments
     </div>
   );

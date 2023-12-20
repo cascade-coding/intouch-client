@@ -10,16 +10,14 @@ import numeral from "numeral";
 import useTogglePostLike from "@/hooks/useTogglePostLike";
 import PostContent from "./post-content";
 import { useDispatch } from "react-redux";
-import { setPostLikeInfo } from "@/features/postsSlice";
+import { setDialogPostId, setPostLikeInfo } from "@/features/postsSlice";
 
 const PostCard = ({
   post,
   setPostDialog,
-  setDialogPostId,
 }: {
   post: PostType;
   setPostDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setDialogPostId: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const dispatch = useDispatch();
   const { togglePostLike } = useTogglePostLike();
@@ -44,7 +42,7 @@ const PostCard = ({
           variant="outline"
           className="flex items-center justify-center gap-2  flex-1"
           onClick={() => {
-            setPostDialog(true), setDialogPostId(post.id);
+            setPostDialog(true), dispatch(setDialogPostId(post.id));
           }}
         >
           <MdOutlineModeComment /> Comment
