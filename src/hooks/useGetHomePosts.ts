@@ -1,17 +1,21 @@
+import { RootState } from "@/app/store";
+import { setPosts } from "@/features/postsSlice";
 import { privateApi } from "@/http";
-import { PostType } from "@/types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function useGetHomePosts() {
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const posts = useSelector((state: RootState) => state.posts.values);
+
   const ran = useRef(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (ran.current === false) {
       (async () => {
         try {
           const { data } = await privateApi.get("/home/posts/");
-          setPosts(data.results);
+          dispatch(setPosts(data.results));
         } catch (error) {
           console.log(error);
         }

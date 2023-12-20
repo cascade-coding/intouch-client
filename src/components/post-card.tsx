@@ -9,20 +9,19 @@ import { Button } from "@/components/ui/button";
 import numeral from "numeral";
 import useTogglePostLike from "@/hooks/useTogglePostLike";
 import PostContent from "./post-content";
+import { useDispatch } from "react-redux";
+import { setPostLikeInfo } from "@/features/postsSlice";
 
 const PostCard = ({
   post,
   setPostDialog,
-  setPost,
+  setDialogPostId,
 }: {
   post: PostType;
   setPostDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  setPost: React.Dispatch<React.SetStateAction<PostType | null>>;
+  setDialogPostId: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const [{ liked, like_counts }, setPostLikeInfo] = useState({
-    liked: post.user_liked,
-    like_counts: post.like_counts,
-  });
+  const dispatch = useDispatch();
   const { togglePostLike } = useTogglePostLike();
 
   return (
@@ -34,30 +33,18 @@ const PostCard = ({
           variant="outline"
           className="flex items-center justify-center gap-2 flex-1"
           onClick={() => {
-            setPostLikeInfo({
-              liked: !liked,
-              like_counts: liked ? like_counts - 1 : like_counts + 1,
-            });
+            dispatch(setPostLikeInfo(post.id));
             togglePostLike(post.id);
           }}
         >
-          {liked ? (
-            <>
-              <MdThumbUp />
-              {numeral(like_counts).format("0a")}
-            </>
-          ) : (
-            <>
-              <MdOutlineThumbUp />
-              {numeral(like_counts).format("0a")}
-            </>
-          )}
+          {post.user_liked ? <MdThumbUp /> : <MdOutlineThumbUp />}
+          {numeral(post.like_counts).format("0a")}
         </Button>
         <Button
           variant="outline"
           className="flex items-center justify-center gap-2  flex-1"
           onClick={() => {
-            setPostDialog(true), setPost(post);
+            setPostDialog(true), setDialogPostId(post.id);
           }}
         >
           <MdOutlineModeComment /> Comment

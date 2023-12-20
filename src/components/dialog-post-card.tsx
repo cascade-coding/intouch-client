@@ -1,5 +1,3 @@
-import { PostType } from "@/types";
-import { useState } from "react";
 import {
   MdOutlineThumbUp,
   MdThumbUp,
@@ -9,17 +7,18 @@ import { Button } from "@/components/ui/button";
 import numeral from "numeral";
 import useTogglePostLike from "@/hooks/useTogglePostLike";
 import DialogPostContent from "./dialog-post-content";
+import { useDispatch, useSelector } from "react-redux";
+import { setPostLikeInfo } from "@/features/postsSlice";
+import { RootState } from "@/app/store";
 
-const DialogPostCard = ({
-  post,
-}: {
-  post: PostType;
-}) => {
-  const [{ liked, like_counts }, setPostLikeInfo] = useState({
-    liked: post.user_liked,
-    like_counts: post.like_counts,
-  });
+const DialogPostCard = ({ dialogPostId }: { dialogPostId: string }) => {
+  const dispatch = useDispatch();
+  const posts = useSelector((state: RootState) => state.posts.values);
+  const post = posts.find((item) => item.id === dialogPostId);
+
   const { togglePostLike } = useTogglePostLike();
+
+  if (!post) return null;
 
   return (
     <div className="bg-background rounded-sm p-4 shadow-md mt-6 first:mt-0">
@@ -30,24 +29,12 @@ const DialogPostCard = ({
           variant="outline"
           className="flex items-center justify-center gap-2 flex-1"
           onClick={() => {
-            setPostLikeInfo({
-              liked: !liked,
-              like_counts: liked ? like_counts - 1 : like_counts + 1,
-            });
+            dispatch(setPostLikeInfo(post.id));
             togglePostLike(post.id);
           }}
         >
-          {liked ? (
-            <>
-              <MdThumbUp />
-              {numeral(like_counts).format("0a")}
-            </>
-          ) : (
-            <>
-              <MdOutlineThumbUp />
-              {numeral(like_counts).format("0a")}
-            </>
-          )}
+          {post.user_liked ? <MdThumbUp /> : <MdOutlineThumbUp />}
+          {numeral(post.like_counts).format("0a")}
         </Button>
         <Button
           variant="outline"
@@ -56,6 +43,9 @@ const DialogPostCard = ({
           <MdOutlineModeComment /> Comment
         </Button>
       </div>
+
+
+      comments
     </div>
   );
 };

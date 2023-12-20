@@ -15,6 +15,8 @@ import Home from "./routes/home";
 import Follow from "./routes/users/follow";
 import Profile from "./routes/users/profile";
 import Root from "./routes/root";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -67,7 +69,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
       <Toaster />
     </ThemeProvider>
   </React.StrictMode>

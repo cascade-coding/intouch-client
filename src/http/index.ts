@@ -40,6 +40,7 @@ privateApi.interceptors.request.use(
 
       return req;
     } catch (error) {
+      console.log(error);
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
     }
