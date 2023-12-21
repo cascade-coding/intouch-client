@@ -58,7 +58,7 @@ const DialogPostCard = () => {
           <React.Fragment key={comment.id}>
             <CommentCard comment={comment} />
             {comment.reply_counts > 0 && (
-              <div className="ml-[46px]">
+              <div className="ml-[34px]">
                 <Button className="mt-1" variant="info" size="sm">
                   <ChevronDown size={15} className="pt-[2px] mr-2" />{" "}
                   <span>{comment.reply_counts} replies</span>
