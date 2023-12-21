@@ -1,13 +1,9 @@
 import { CommentType } from "@/types";
-import React from "react";
 import Avatar from "./avatar";
 import {
   MdOutlineThumbUp,
-  MdThumbUp,
-  MdOutlineModeComment,
   MdOutlineThumbDown,
 } from "react-icons/md";
-import { ThumbsDown, ThumbsUp } from "lucide-react";
 
 const CommentCard = ({ comment }: { comment: CommentType }) => {
   return (
