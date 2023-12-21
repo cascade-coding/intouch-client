@@ -10,15 +10,22 @@ import DialogPostContent from "./dialog-post-content";
 import { useDispatch, useSelector } from "react-redux";
 import { setPostLikeInfo } from "@/features/postsSlice";
 import { RootState } from "@/app/store";
+import useGetPostComments from "@/hooks/useGetPostComments";
+import CommentCard from "./comment-card";
+import React from "react";
+import { ChevronDown } from "lucide-react";
 
 const DialogPostCard = () => {
   const dispatch = useDispatch();
   const {
     posts: { results: posts },
     dialogPostId,
+    dialogComments,
   } = useSelector((state: RootState) => state.posts);
 
   const post = posts.find((item) => item.id === dialogPostId);
+
+  useGetPostComments();
 
   const { togglePostLike } = useTogglePostLike();
 
@@ -46,7 +53,21 @@ const DialogPostCard = () => {
           <MdOutlineModeComment /> Comment
         </Button>
       </div>
-      comments
+      <section className="p-2 overflow-y-auto max-h-[500px] mt-6 hide-scrollbar">
+        {dialogComments.results.map((comment) => (
+          <React.Fragment key={comment.id}>
+            <CommentCard comment={comment} />
+            {comment.reply_counts > 0 && (
+              <div className="ml-[46px]">
+                <Button className="mt-1" variant="info" size="sm">
+                  <ChevronDown size={15} className="pt-[2px] mr-2" />{" "}
+                  <span>{comment.reply_counts} replies</span>
+                </Button>
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </section>
     </div>
   );
 };

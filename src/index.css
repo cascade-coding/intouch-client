@@ -75,20 +75,20 @@
   }
 }
 
-#post-dialog::-webkit-scrollbar {
+.hide-scrollbar::-webkit-scrollbar {
   width: 5px;
 }
 
-#post-dialog::-webkit-scrollbar-track {
+.hide-scrollbar::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 5px;
 }
 
-#post-dialog::-webkit-scrollbar-thumb {
+.hide-scrollbar::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 5px;
 }
 
-#post-dialog::-webkit-scrollbar-thumb:hover {
+.hide-scrollbar::-webkit-scrollbar-thumb:hover {
   background: transparent;
 }

@@ -40,9 +40,8 @@ privateApi.interceptors.request.use(
 
       return req;
     } catch (error) {
-      console.log(error, 'axios interceoptor');
-      // localStorage.removeItem("access");
-      // localStorage.removeItem("refresh");
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
     }
 
     return req;

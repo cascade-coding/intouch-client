@@ -16,6 +16,23 @@ export type PostType = {
   post_images: { id: string; image: string }[] | [];
 };
 
+export type CommentType = {
+  id: string;
+  profile: {
+    id: string;
+    profile_photo: string;
+    user: {
+      id: string;
+      username: string;
+    };
+  };
+  like_counts: number;
+  dislike_counts: number;
+  text: string;
+  reply_counts: number;
+  created_at: Date;
+};
+
 export type SuggestionType = {
   id: string;
   profile_photo: string;

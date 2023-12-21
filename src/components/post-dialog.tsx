@@ -12,7 +12,7 @@ const PostDialog = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
-        className="sm:max-w-2xl overflow-auto h-screen"
+        className="sm:max-w-2xl overflow-auto h-[90%] hide-scrollbar"
         id="post-dialog"
       >
         <DialogPostCard  />

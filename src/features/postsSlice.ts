@@ -1,4 +1,4 @@
-import { PostType } from "@/types";
+import { CommentType, PostType } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,9 +8,16 @@ type PostsDataType = {
   previous: boolean | null;
 };
 
+type CommentsDataType = {
+  results: CommentType[];
+  next: boolean | null;
+  previous: boolean | null;
+};
+
 export interface PostsState {
   posts: PostsDataType;
   dialogPostId: string;
+  dialogComments: CommentsDataType;
 }
 
 const initialState: PostsState = {
@@ -20,6 +27,11 @@ const initialState: PostsState = {
     previous: null,
   },
   dialogPostId: "",
+  dialogComments: {
+    results: [],
+    next: null,
+    previous: null,
+  },
 };
 
 export const postsSlice = createSlice({
@@ -54,10 +66,19 @@ export const postsSlice = createSlice({
     setDialogPostId: (state, action: PayloadAction<string>) => {
       state.dialogPostId = action.payload;
     },
+
+    setComments: (state, action: PayloadAction<CommentsDataType>) => {
+      state.dialogComments = action.payload;
+    },
   },
 });
 
-export const { setPosts, setPostsOnScroll, setPostLikeInfo, setDialogPostId } =
-  postsSlice.actions;
+export const {
+  setPosts,
+  setPostsOnScroll,
+  setPostLikeInfo,
+  setDialogPostId,
+  setComments,
+} = postsSlice.actions;
 
 export default postsSlice.reducer;
