@@ -23,8 +23,12 @@ const CommentCard = ({ comment }: { comment: CommentType }) => {
           <p className="text-sm mt-2">{comment.text}</p>
 
           <div className="flex gap-x-4 mt-2">
-            <MdOutlineThumbUp />
-            <MdOutlineThumbDown />
+            <button className="cursor-pointer">
+              <MdOutlineThumbUp />
+            </button>
+            <button className="cursor-pointer">
+              <MdOutlineThumbDown />
+            </button>
           </div>
         </div>
       </div>
