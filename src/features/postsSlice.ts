@@ -70,6 +70,17 @@ export const postsSlice = createSlice({
     setComments: (state, action: PayloadAction<CommentsDataType>) => {
       state.dialogComments = action.payload;
     },
+
+    setCommentsOnScroll: (state, action: PayloadAction<CommentsDataType>) => {
+      const { next, previous, results } = action.payload;
+
+      state.dialogComments.next = next;
+      state.dialogComments.previous = previous;
+      state.dialogComments.results = [
+        ...state.dialogComments.results,
+        ...results,
+      ];
+    },
   },
 });
 
@@ -79,6 +90,7 @@ export const {
   setPostLikeInfo,
   setDialogPostId,
   setComments,
+  setCommentsOnScroll,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -14,6 +14,7 @@ import useGetPostComments from "@/hooks/use-get-post-comments";
 import CommentCard from "./comment-card";
 import React from "react";
 import { ChevronDown } from "lucide-react";
+import LoadMoreComments from "./load-more-comments";
 
 const DialogPostCard = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,8 @@ const DialogPostCard = () => {
             )}
           </React.Fragment>
         ))}
+
+        <LoadMoreComments />
       </section>
     </div>
   );
