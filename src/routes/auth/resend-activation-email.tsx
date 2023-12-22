@@ -1,3 +1,7 @@
+import { ReloadIcon } from "@radix-ui/react-icons";
+
+import { useNavigate } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import AuthNavbar from "@/components/auth/auth-navbar";
 import {
   Form,
   FormControl,
@@ -16,9 +19,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
+
+import AuthNavbar from "./components/auth-navbar";
+
 import useSendActivationEmail from "@/hooks/useSendActivationEmail";
-import { ReloadIcon } from "@radix-ui/react-icons";
-import { useNavigate } from "react-router-dom";
 
 const ReSendActivationEmail = () => {
   const navigate = useNavigate();

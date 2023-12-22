@@ -3,7 +3,8 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { ModeToggle } from "../toggle-mode";
+
+import { ModeToggle } from "@/components/toggle-mode";
 
 export default function AuthNavbar() {
   return (

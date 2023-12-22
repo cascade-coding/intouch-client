@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import {
   Form,
   FormControl,
@@ -8,9 +11,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
+
 import useSignUp from "@/hooks/useSignUp";
-import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
 
 const CreateAccountForm = () => {
   const { form, onSubmit } = useSignUp();

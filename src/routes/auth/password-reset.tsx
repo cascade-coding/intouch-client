@@ -1,3 +1,5 @@
+import { ReloadIcon } from "@radix-ui/react-icons";
+
 import {
   Card,
   CardContent,
@@ -6,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import AuthNavbar from "@/components/auth/auth-navbar";
 import {
   Form,
   FormControl,
@@ -15,9 +16,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { ReloadIcon } from "@radix-ui/react-icons";
-import useSendResetPasswordEmail from "@/hooks/useSendResetPasswordEmail";
 import { Button } from "@/components/ui/button";
+
+import AuthNavbar from "./components/auth-navbar";
+
+import useSendResetPasswordEmail from "@/hooks/useSendResetPasswordEmail";
 
 const PasswordReset = () => {
   const { form, onSubmit } = useSendResetPasswordEmail();

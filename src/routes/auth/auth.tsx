@@ -1,3 +1,5 @@
+import { Link, useSearchParams } from "react-router-dom";
+
 import {
   Card,
   CardContent,
@@ -6,11 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CreateAccountForm from "@/components/auth/create-account-form";
-import LoginForm from "@/components/auth/login-form";
-import { Link } from "react-router-dom";
-import AuthNavbar from "@/components/auth/auth-navbar";
-import { useSearchParams } from "react-router-dom";
+
+import CreateAccountForm from "./components/create-account-form";
+import LoginForm from "./components/login-form";
+import AuthNavbar from "./components/auth-navbar";
 
 const Auth = () => {
   const [searchParams] = useSearchParams();

@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import {
   Form,
   FormControl,
@@ -9,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import useLogin from "@/hooks/useLogin";
 
 const LoginForm = () => {

@@ -1,4 +1,7 @@
 import { useState } from "react";
+
+import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import AuthNavbar from "@/components/auth/auth-navbar";
 import {
   Form,
   FormControl,
@@ -17,8 +19,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { EyeClosedIcon, EyeOpenIcon, ReloadIcon } from "@radix-ui/react-icons";
+
 import usePasswordResetConfirm from "@/hooks/usePasswordResetConfirm";
+
+import AuthNavbar from "./components/auth-navbar";
 
 const PasswordResetConfirm = () => {
   const [showPassword1, setShowPassword1] = useState(false);
