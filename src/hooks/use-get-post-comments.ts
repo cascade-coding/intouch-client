@@ -11,6 +11,7 @@ const useGetPostComments = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setComments({ results: [], next: null, previous: null }));
     if (ran.current === false) {
       (async () => {
         try {
