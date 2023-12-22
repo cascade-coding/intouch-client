@@ -1,6 +1,5 @@
 import { privateApi } from "@/http";
 import { UserType } from "@/types";
-import { jwtDecode, JwtPayload } from "jwt-decode";
 import { useEffect, useRef, useState } from "react";
 
 export default function useGetTokenUser() {

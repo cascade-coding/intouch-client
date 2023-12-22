@@ -5,9 +5,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-import useGetTokenUser from "@/hooks/useGetTokenUser";
+import useGetTokenUser from "@/hooks/use-get-token-user";
 import { TbLogout } from "react-icons/tb";
-import useLogout from "@/hooks/useLogout";
+import useLogout from "@/hooks/use-logout";
 
 const AvatarDropDown = () => {
   const { user } = useGetTokenUser();

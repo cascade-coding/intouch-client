@@ -1,6 +1,5 @@
-import useGetTopSuggestions from "@/hooks/useGetTopSuggestions";
+import useGetTopSuggestions from "@/hooks/use-get-top-suggestions";
 import AvatarSkeleton from "./avatar-skeleton";
-import useHandleFollowing from "@/hooks/useHandleFollowing";
 import SuggestionCardPrimary from "./suggestion-card-primary";
 
 const TopSuggestions = () => {

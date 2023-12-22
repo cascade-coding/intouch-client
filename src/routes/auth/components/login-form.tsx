@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import useLogin from "@/hooks/useLogin";
+import useLogin from "@/hooks/use-login";
 
 const LoginForm = () => {
   const [showPassword1, setShowPassword1] = useState(false);

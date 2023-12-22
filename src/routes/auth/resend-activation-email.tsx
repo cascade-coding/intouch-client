@@ -23,7 +23,7 @@ import {
 
 import AuthNavbar from "./components/auth-navbar";
 
-import useSendActivationEmail from "@/hooks/useSendActivationEmail";
+import useSendActivationEmail from "@/hooks/use-send-activation-email";
 
 const ReSendActivationEmail = () => {
   const navigate = useNavigate();

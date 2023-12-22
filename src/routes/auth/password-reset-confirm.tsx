@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import usePasswordResetConfirm from "@/hooks/usePasswordResetConfirm";
+import usePasswordResetConfirm from "@/hooks/use-password-reset-confirm";
 
 import AuthNavbar from "./components/auth-navbar";
 

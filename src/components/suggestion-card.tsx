@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import numeral from "numeral";
 import { Button } from "./ui/button";
 import { FollowProfilesType, SuggestionType } from "@/types";
-import useHandleFollowProfile from "@/hooks/useHandleFollowProfile";
+import useHandleFollowProfile from "@/hooks/use-handle-follow-profile";
 import Avatar from "./avatar";
 
 type SuggestionCardType = {
@@ -12,11 +12,7 @@ type SuggestionCardType = {
   loading: boolean;
 };
 
-const SuggestionCard = ({
-  suggestion,
-  setSuggestions,
-  loading,
-}: SuggestionCardType) => {
+const SuggestionCard = ({ suggestion, setSuggestions }: SuggestionCardType) => {
   const { handleFollowing } = useHandleFollowProfile();
   const navigate = useNavigate();
 

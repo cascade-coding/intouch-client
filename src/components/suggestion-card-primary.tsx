@@ -2,7 +2,7 @@ import { SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import numeral from "numeral";
 import { Button } from "./ui/button";
-import useHandleFollowing from "@/hooks/useHandleFollowing";
+import useHandleFollowing from "@/hooks/use-handle-following";
 import { SuggestionType, UserType } from "@/types";
 import Avatar from "./avatar";
 

@@ -13,7 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import useSignUp from "@/hooks/useSignUp";
+import useSignUp from "@/hooks/use-signup";
 
 const CreateAccountForm = () => {
   const { form, onSubmit } = useSignUp();

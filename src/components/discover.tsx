@@ -17,8 +17,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 import numeral from "numeral";
 import { useRouter } from "next/navigation";
-import useHandleFollowing from "@/hooks/useHandleFollowing";
-import useGetTokenUser from "@/hooks/useGetTokenUser";
+import useHandleFollowing from "@/hooks/use-handle-following";
+import useGetTokenUser from "@/hooks/use-get-token-user";
 import SuggestionCardPrimary from "./suggestion-card-primary";
 
 const Discover = () => {

@@ -1,10 +1,8 @@
 import { privateApi } from "@/http";
-import { FollowProfilesType, SuggestionType } from "@/types";
+import { SuggestionType } from "@/types";
 import { SetStateAction } from "react";
 
-type setSuggestionsType = (value: SetStateAction<FollowProfilesType>) => void;
-
-type setTopSuggestionsType = (value: SetStateAction<SuggestionType[]>) => void
+type setTopSuggestionsType = (value: SetStateAction<SuggestionType[]>) => void;
 
 function useHandleFollowing() {
   const handleFollowing = async (

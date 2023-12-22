@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 
 import AuthNavbar from "./components/auth-navbar";
 
-import useSendResetPasswordEmail from "@/hooks/useSendResetPasswordEmail";
+import useSendResetPasswordEmail from "@/hooks/use-send-reset-password-email";
 
 const PasswordReset = () => {
   const { form, onSubmit } = useSendResetPasswordEmail();

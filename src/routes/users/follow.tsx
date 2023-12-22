@@ -1,6 +1,6 @@
 import MobileBottomNavbar from "@/components/mobile-bottom-navbar";
 import TopHeader from "@/components/top-header";
-import useGetFollowProfiles from "@/hooks/useGetFollowProfiles";
+import useGetFollowProfiles from "@/hooks/use-get-follow-profiles";
 import SuggestionCard from "@/components/suggestion-card";
 import LoadMoreSuggestions from "@/components/load-more-suggestions";
 

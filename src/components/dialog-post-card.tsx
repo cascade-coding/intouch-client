@@ -5,12 +5,12 @@ import {
 } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import numeral from "numeral";
-import useTogglePostLike from "@/hooks/useTogglePostLike";
+import useTogglePostLike from "@/hooks/use-toggle-post-like";
 import DialogPostContent from "./dialog-post-content";
 import { useDispatch, useSelector } from "react-redux";
 import { setPostLikeInfo } from "@/features/postsSlice";
 import { RootState } from "@/app/store";
-import useGetPostComments from "@/hooks/useGetPostComments";
+import useGetPostComments from "@/hooks/use-get-post-comments";
 import CommentCard from "./comment-card";
 import React from "react";
 import { ChevronDown } from "lucide-react";

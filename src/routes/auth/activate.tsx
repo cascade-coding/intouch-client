@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import useActivateAccount from "@/hooks/useActivateAccount";
+import useActivateAccount from "@/hooks/use-activate-ccount";
 
 const Activate = () => {
   const { isLoading, handleActivate } = useActivateAccount();

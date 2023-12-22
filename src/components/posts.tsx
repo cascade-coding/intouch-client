@@ -1,5 +1,5 @@
 "use client";
-import useGetHomePosts from "@/hooks/useGetHomePosts";
+import useGetHomePosts from "@/hooks/use-get-home-posts";
 import PostCard from "./post-card";
 import PostDialog from "./post-dialog";
 import { useState } from "react";

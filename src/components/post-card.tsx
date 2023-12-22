@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { Button } from "@/components/ui/button";
 import numeral from "numeral";
-import useTogglePostLike from "@/hooks/useTogglePostLike";
+import useTogglePostLike from "@/hooks/use-toggle-post-like";
 import PostContent from "./post-content";
 import { useDispatch } from "react-redux";
 import { setDialogPostId, setPostLikeInfo } from "@/features/postsSlice";
