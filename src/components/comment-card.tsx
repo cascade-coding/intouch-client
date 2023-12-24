@@ -1,9 +1,9 @@
+import { MdOutlineThumbUp, MdOutlineThumbDown } from "react-icons/md";
+
 import { CommentType } from "@/types";
+
 import Avatar from "./avatar";
-import {
-  MdOutlineThumbUp,
-  MdOutlineThumbDown,
-} from "react-icons/md";
+import HumanizeTime from "./humanize-time";
 
 const CommentCard = ({ comment }: { comment: CommentType }) => {
   return (
@@ -14,7 +14,11 @@ const CommentCard = ({ comment }: { comment: CommentType }) => {
           username={comment.profile.user.username}
         />
         <div className="-mt-1">
-          <span className="font-medium">{comment.profile.user.username}</span>
+          <p className="font-medium">
+            {comment.profile.user.username}
+
+            <HumanizeTime time={comment.created_at} />
+          </p>
 
           <p className="text-sm mt-2">{comment.text}</p>
 
