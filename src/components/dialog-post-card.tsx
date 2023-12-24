@@ -57,7 +57,7 @@ const DialogPostCard = () => {
       <section className="p-2 overflow-y-auto max-h-[500px] mt-6 hide-scrollbar">
         {dialogComments.results.map((comment) => (
           <React.Fragment key={comment.id}>
-            <CommentCard comment={comment} />
+            <CommentCard comment={comment} showReplyBtn />
             {comment.reply_counts !== undefined && comment.reply_counts > 0 && (
               <Reply comment={comment} />
             )}
