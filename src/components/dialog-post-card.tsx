@@ -13,8 +13,8 @@ import { RootState } from "@/app/store";
 import useGetPostComments from "@/hooks/use-get-post-comments";
 import CommentCard from "./comment-card";
 import React from "react";
-import { ChevronDown } from "lucide-react";
 import LoadMoreComments from "./load-more-comments";
+import Reply from "./reply";
 
 const DialogPostCard = () => {
   const dispatch = useDispatch();
@@ -58,14 +58,7 @@ const DialogPostCard = () => {
         {dialogComments.results.map((comment) => (
           <React.Fragment key={comment.id}>
             <CommentCard comment={comment} />
-            {comment.reply_counts > 0 && (
-              <div className="ml-[34px]">
-                <Button className="mt-1" variant="info" size="sm">
-                  <ChevronDown size={15} className="pt-[2px] mr-2" />{" "}
-                  <span>{comment.reply_counts} replies</span>
-                </Button>
-              </div>
-            )}
+            {comment.reply_counts > 0 && <Reply comment={comment} />}
           </React.Fragment>
         ))}
 
