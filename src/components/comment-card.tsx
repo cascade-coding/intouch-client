@@ -5,15 +5,20 @@ import { CommentType } from "@/types";
 import Avatar from "./avatar";
 import HumanizeTime from "./humanize-time";
 
-
-
-const CommentCard = ({ comment }: { comment: CommentType }) => {
+const CommentCard = ({
+  comment,
+  avatarSm = false,
+}: {
+  comment: CommentType;
+  avatarSm?: boolean;
+}) => {
   return (
     <div className="mt-6">
       <div className="flex gap-x-4">
         <Avatar
           profile_photo={comment.profile.profile_photo}
           username={comment.profile.user.username}
+          sm={avatarSm}
         />
         <div className="-mt-1">
           <p className="font-medium">
