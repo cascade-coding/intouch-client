@@ -1,17 +1,31 @@
-import { MdOutlineThumbUp, MdOutlineThumbDown } from "react-icons/md";
+import {
+  MdOutlineThumbUp,
+  MdOutlineThumbDown,
+  MdOutlineQuickreply,
+} from "react-icons/md";
 
 import { CommentType } from "@/types";
 
 import Avatar from "./avatar";
 import HumanizeTime from "./humanize-time";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Input } from "./ui/input";
+import useIsMobile from "@/hooks/use-ismobile";
 
 const CommentCard = ({
   comment,
   avatarSm = false,
+  showReplyBtn = false,
 }: {
   comment: CommentType;
   avatarSm?: boolean;
+  showReplyBtn?: boolean;
 }) => {
+  const { isMobile } = useIsMobile();
   return (
     <div className="mt-6">
       <div className="flex gap-x-4">
@@ -36,6 +50,23 @@ const CommentCard = ({
             <button className="cursor-pointer">
               <MdOutlineThumbDown />
             </button>
+
+            {showReplyBtn && (
+              <Popover modal>
+                <PopoverTrigger asChild>
+                  <button className="cursor-pointer">
+                    <MdOutlineQuickreply />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent
+                  side={isMobile ? "bottom" : "right"}
+                  sideOffset={10}
+                  className="border-none"
+                >
+                  <Input placeholder="it's cool" />
+                </PopoverContent>
+              </Popover>
+            )}
           </div>
         </div>
       </div>
