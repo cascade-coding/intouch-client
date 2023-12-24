@@ -1,8 +1,13 @@
-import { Button } from "./ui/button";
-import { ChevronDown, ChevronUp, CornerDownRight } from "lucide-react";
-import { CommentType, ReplyCommentType } from "@/types";
 import { useState } from "react";
+
+import { ChevronDown, ChevronUp, CornerDownRight } from "lucide-react";
+
+import { Button } from "./ui/button";
+
+import { CommentType, ReplyCommentType } from "@/types";
+
 import { privateApi } from "@/http";
+
 import CommentCard from "./comment-card";
 
 type RepliesDataType = {
