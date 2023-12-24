@@ -14,6 +14,7 @@ export type PostType = {
   dislike_counts: number;
   text: string | null;
   post_images: { id: string; image: string }[] | [];
+  created_at: Date;
 };
 
 export type CommentType = {

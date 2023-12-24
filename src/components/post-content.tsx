@@ -2,6 +2,7 @@ import { PostType } from "@/types";
 import { RefObject, useRef, useState } from "react";
 import FsLightbox from "fslightbox-react";
 import Avatar from "./avatar";
+import HumanizeTime from "./humanize-time";
 
 const PostContent = ({ post }: { post: PostType }) => {
   const textEl: RefObject<HTMLSpanElement> = useRef(null);
@@ -26,7 +27,10 @@ const PostContent = ({ post }: { post: PostType }) => {
             username={post.profile.user.username}
           />
 
-          <h5>{post.profile.user.username}</h5>
+          <h5>
+            {post.profile.user.username}
+            <HumanizeTime time={post.created_at} />
+          </h5>
         </div>
       </div>
       {post.text && (
