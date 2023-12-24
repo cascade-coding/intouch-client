@@ -5,6 +5,8 @@ import { CommentType } from "@/types";
 import Avatar from "./avatar";
 import HumanizeTime from "./humanize-time";
 
+
+
 const CommentCard = ({ comment }: { comment: CommentType }) => {
   return (
     <div className="mt-6">

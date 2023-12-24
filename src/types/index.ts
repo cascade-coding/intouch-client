@@ -30,7 +30,23 @@ export type CommentType = {
   like_counts: number;
   dislike_counts: number;
   text: string;
-  reply_counts: number;
+  reply_counts?: number;
+  created_at: Date;
+};
+
+export type ReplyCommentType = {
+  id: string;
+  profile: {
+    id: string;
+    profile_photo: string;
+    user: {
+      id: string;
+      username: string;
+    };
+  };
+  like_counts: number;
+  dislike_counts: number;
+  text: string;
   created_at: Date;
 };
 

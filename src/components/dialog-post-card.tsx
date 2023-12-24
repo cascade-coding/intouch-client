@@ -58,7 +58,9 @@ const DialogPostCard = () => {
         {dialogComments.results.map((comment) => (
           <React.Fragment key={comment.id}>
             <CommentCard comment={comment} />
-            {comment.reply_counts > 0 && <Reply comment={comment} />}
+            {comment.reply_counts !== undefined && comment.reply_counts > 0 && (
+              <Reply comment={comment} />
+            )}
           </React.Fragment>
         ))}
 
