@@ -81,6 +81,13 @@ export const postsSlice = createSlice({
         ...results,
       ];
     },
+
+    increaseReplyCounts: (state, action: PayloadAction<string>) => {
+      const comments = state.dialogComments.results;
+      const comment = comments.find((item) => item.id === action.payload);
+
+      comment?.reply_counts && comment.reply_counts++;
+    },
   },
 });
 
@@ -91,6 +98,7 @@ export const {
   setDialogPostId,
   setComments,
   setCommentsOnScroll,
+  increaseReplyCounts,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
