@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   MdOutlineThumbUp,
   MdOutlineThumbDown,
@@ -7,17 +9,10 @@ import {
 import { CommentType } from "@/types";
 
 import Avatar from "./avatar";
+
 import HumanizeTime from "./humanize-time";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Input } from "./ui/input";
-import useIsMobile from "@/hooks/use-ismobile";
-import { Textarea } from "./ui/textarea";
-import { useState } from "react";
-import { Button } from "./ui/button";
+
+import ReplyInput from "./reply-input";
 
 const CommentCard = ({
   comment,
@@ -65,12 +60,7 @@ const CommentCard = ({
             )}
           </div>
           {showReplyBtn && showReplyInput && (
-            <div className="mt-3 w-full block">
-              <Textarea placeholder="it's cool" />
-              <Button size="sm" className="mt-2" variant="outline">
-                Add
-              </Button>
-            </div>
+            <ReplyInput commentId={comment.id} />
           )}
         </div>
       </div>
