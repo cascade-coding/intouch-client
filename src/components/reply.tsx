@@ -1,29 +1,33 @@
 import { useState } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+
 import { ChevronDown, ChevronUp, CornerDownRight } from "lucide-react";
 
 import { Button } from "./ui/button";
 
-import { CommentType, ReplyCommentType } from "@/types";
+import { CommentType } from "@/types";
 
 import { privateApi } from "@/http";
 
-import CommentCard from "./comment-card";
+import { RootState } from "@/app/store";
 
-type RepliesDataType = {
-  results: ReplyCommentType[];
-  next: boolean | null;
-  previous: boolean | null;
-};
+import {
+  loadMoreCommentReplies,
+  setCommentReplies,
+} from "@/features/postsSlice";
+
+import CommentCard from "./comment-card";
 
 const Reply = ({ comment }: { comment: CommentType }) => {
   const [showReplies, setShowReplies] = useState(false);
   const [initialLoaded, setInitialLoaded] = useState(false);
-  const [replies, setReplies] = useState<RepliesDataType>({
-    next: null,
-    previous: null,
-    results: [],
-  });
+
+  const dispatch = useDispatch();
+
+  const { commentReplies } = useSelector((state: RootState) => state.posts);
+
+  const replies = commentReplies.find((item) => item.replyTo === comment.id);
 
   const handleLoadReplies = async () => {
     setShowReplies(!showReplies);
@@ -34,25 +38,20 @@ const Reply = ({ comment }: { comment: CommentType }) => {
       const { data } = await privateApi.post(`/get_post_comment_replies/`, {
         id: comment.id,
       });
-      setReplies(data);
+      dispatch(setCommentReplies({ ...data, replyTo: comment.id }));
       setInitialLoaded(true);
     } catch (error) {
       console.log(error);
     }
   };
   const handleLoadMoreReplies = async () => {
+    if (!replies) return;
     if (replies.next === null) return;
     try {
       const { data } = await privateApi.post(`${replies.next}`, {
         id: comment.id,
       });
-      setReplies((prev) => {
-        return {
-          next: data.next,
-          previous: data.previous,
-          results: [...prev.results, ...data.results],
-        };
-      });
+      dispatch(loadMoreCommentReplies({ ...data, replyTo: comment.id }));
     } catch (error) {
       console.log(error);
     }
@@ -75,23 +74,25 @@ const Reply = ({ comment }: { comment: CommentType }) => {
           <span>{comment.reply_counts} replies</span>
         </Button>
 
-        <div className={`${showReplies ? "block" : "hidden"}`}>
-          {replies.results.map((item) => (
-            <CommentCard key={item.id} comment={item} avatarSm={true}/>
-          ))}
+        {replies && (
+          <div className={`${showReplies ? "block" : "hidden"}`}>
+            {replies.results.map((item) => (
+              <CommentCard key={item.id} comment={item} avatarSm={true} />
+            ))}
 
-          {replies.next && (
-            <Button
-              className="mt-1"
-              variant="info"
-              size="sm"
-              onClick={handleLoadMoreReplies}
-            >
-              <CornerDownRight size={15} className="pt-[2px] mr-2" />{" "}
-              <span>Show more replies</span>
-            </Button>
-          )}
-        </div>
+            {replies.next && (
+              <Button
+                className="mt-1"
+                variant="info"
+                size="sm"
+                onClick={handleLoadMoreReplies}
+              >
+                <CornerDownRight size={15} className="pt-[2px] mr-2" />{" "}
+                <span>Show more replies</span>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

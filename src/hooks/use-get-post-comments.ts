@@ -1,5 +1,5 @@
 import { RootState } from "@/app/store";
-import { setComments } from "@/features/postsSlice";
+import { emptyCommentReplies, setComments } from "@/features/postsSlice";
 import { privateApi } from "@/http";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ const useGetPostComments = () => {
 
   useEffect(() => {
     dispatch(setComments({ results: [], next: null, previous: null }));
+    dispatch(emptyCommentReplies([]));
     if (ran.current === false) {
       (async () => {
         try {

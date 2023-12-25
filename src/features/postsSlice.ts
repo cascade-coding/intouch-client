@@ -1,4 +1,4 @@
-import { CommentType, PostType } from "@/types";
+import { CommentType, PostType, ReplyCommentType } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -14,10 +14,18 @@ type CommentsDataType = {
   previous: boolean | null;
 };
 
+type RepliesDataType = {
+  replyTo: string;
+  results: ReplyCommentType[];
+  next: boolean | null;
+  previous: boolean | null;
+};
+
 export interface PostsState {
   posts: PostsDataType;
   dialogPostId: string;
   dialogComments: CommentsDataType;
+  commentReplies: RepliesDataType[];
 }
 
 const initialState: PostsState = {
@@ -32,6 +40,7 @@ const initialState: PostsState = {
     next: null,
     previous: null,
   },
+  commentReplies: [],
 };
 
 export const postsSlice = createSlice({
@@ -88,6 +97,27 @@ export const postsSlice = createSlice({
 
       comment?.reply_counts && comment.reply_counts++;
     },
+
+    setCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
+      state.commentReplies = [...state.commentReplies, action.payload];
+    },
+
+    emptyCommentReplies: (state, action: PayloadAction<[]>) => {
+      state.commentReplies = action.payload;
+    },
+
+    loadMoreCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
+      const { replyTo, next, previous, results } = action.payload;
+
+      const current = state.commentReplies.find(
+        (item) => item.replyTo === replyTo
+      );
+
+      if (current) {
+        Object.assign(current, { next, previous, replyTo });
+        current.results.push(...results);
+      }
+    },
   },
 });
 
@@ -99,6 +129,9 @@ export const {
   setComments,
   setCommentsOnScroll,
   increaseReplyCounts,
+  setCommentReplies,
+  loadMoreCommentReplies,
+  emptyCommentReplies,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
