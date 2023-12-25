@@ -15,6 +15,9 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "./ui/input";
 import useIsMobile from "@/hooks/use-ismobile";
+import { Textarea } from "./ui/textarea";
+import { useState } from "react";
+import { Button } from "./ui/button";
 
 const CommentCard = ({
   comment,
@@ -25,7 +28,8 @@ const CommentCard = ({
   avatarSm?: boolean;
   showReplyBtn?: boolean;
 }) => {
-  const { isMobile } = useIsMobile();
+  const [showReplyInput, setShowReplyInput] = useState(false);
+
   return (
     <div className="mt-6">
       <div className="flex gap-x-4">
@@ -34,7 +38,7 @@ const CommentCard = ({
           username={comment.profile.user.username}
           sm={avatarSm}
         />
-        <div className="-mt-1">
+        <div className="-mt-1 w-2/3">
           <p className="font-medium">
             {comment.profile.user.username}
 
@@ -52,22 +56,22 @@ const CommentCard = ({
             </button>
 
             {showReplyBtn && (
-              <Popover modal>
-                <PopoverTrigger asChild>
-                  <button className="cursor-pointer">
-                    <MdOutlineQuickreply />
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent
-                  side={isMobile ? "bottom" : "right"}
-                  sideOffset={10}
-                  className="border-none"
-                >
-                  <Input placeholder="it's cool" />
-                </PopoverContent>
-              </Popover>
+              <button
+                className="cursor-pointer"
+                onClick={() => setShowReplyInput(!showReplyInput)}
+              >
+                <MdOutlineQuickreply />
+              </button>
             )}
           </div>
+          {showReplyBtn && showReplyInput && (
+            <div className="mt-3 w-full block">
+              <Textarea placeholder="it's cool" />
+              <Button size="sm" className="mt-2" variant="outline">
+                Add
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
