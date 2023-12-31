@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { increaseReplyCounts } from "@/features/postsSlice";
 import { useDispatch } from "react-redux";
+import { privateApi } from "@/http";
 
 const ReplyInput = ({ commentId }: { commentId: string }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,11 @@ const ReplyInput = ({ commentId }: { commentId: string }) => {
     if (text.trim() === "") return;
     try {
       dispatch(increaseReplyCounts(commentId));
+      const { data } = await privateApi.post("/add_post_comment_reply/", {
+        comment_id: commentId,
+        text,
+      });
+      console.log(data);
       setText("");
     } catch (error) {
       console.log(error);
