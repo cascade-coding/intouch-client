@@ -126,7 +126,9 @@ export const postsSlice = createSlice({
       const comments = state.dialogComments.results;
       const comment = comments.find((item) => item.id === action.payload);
 
-      comment?.reply_counts && comment.reply_counts++;
+      if (comment && comment.reply_counts !== undefined) {
+        comment.reply_counts++;
+      }
     },
   },
 });
