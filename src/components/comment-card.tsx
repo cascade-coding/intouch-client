@@ -6,6 +6,8 @@ import {
   MdOutlineQuickreply,
 } from "react-icons/md";
 
+import numeral from "numeral";
+
 import { CommentType } from "@/types";
 
 import Avatar from "./avatar";
@@ -43,8 +45,13 @@ const CommentCard = ({
           <p className="text-sm mt-2">{comment.text}</p>
 
           <div className="flex gap-x-4 mt-2">
-            <button className="cursor-pointer">
+            <button className="cursor-pointer flex items-center justify-center gap-2">
               <MdOutlineThumbUp />
+              {comment.like_counts > 0 && (
+                <span className="text-muted-foreground text-xs">
+                  {numeral(comment.like_counts).format("0a")}
+                </span>
+              )}
             </button>
             <button className="cursor-pointer">
               <MdOutlineThumbDown />
