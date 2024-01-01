@@ -91,29 +91,8 @@ export const postsSlice = createSlice({
       ];
     },
 
-    increaseReplyCounts: (state, action: PayloadAction<string>) => {
-      const comments = state.dialogComments.results;
-      const comment = comments.find((item) => item.id === action.payload);
-
-      comment?.reply_counts && comment.reply_counts++;
-    },
-
-    addNewReply: (state, action: PayloadAction<ReplyCommentType>) => {
-      const current = state.commentReplies.find(
-        (item) => item.replyTo === action.payload.comment
-      );
-
-      if (current) {
-        current.results.unshift(action.payload);
-      }
-    },
-
     setCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
       state.commentReplies = [...state.commentReplies, action.payload];
-    },
-
-    emptyCommentReplies: (state, action: PayloadAction<[]>) => {
-      state.commentReplies = action.payload;
     },
 
     loadMoreCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
@@ -128,6 +107,27 @@ export const postsSlice = createSlice({
         current.results.push(...results);
       }
     },
+
+    emptyCommentReplies: (state, action: PayloadAction<[]>) => {
+      state.commentReplies = action.payload;
+    },
+
+    addNewReply: (state, action: PayloadAction<ReplyCommentType>) => {
+      const current = state.commentReplies.find(
+        (item) => item.replyTo === action.payload.comment
+      );
+
+      if (current) {
+        current.results.unshift(action.payload);
+      }
+    },
+
+    increaseReplyCounts: (state, action: PayloadAction<string>) => {
+      const comments = state.dialogComments.results;
+      const comment = comments.find((item) => item.id === action.payload);
+
+      comment?.reply_counts && comment.reply_counts++;
+    },
   },
 });
 
@@ -138,11 +138,11 @@ export const {
   setDialogPostId,
   setComments,
   setCommentsOnScroll,
-  increaseReplyCounts,
   setCommentReplies,
   loadMoreCommentReplies,
   emptyCommentReplies,
   addNewReply,
+  increaseReplyCounts,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
