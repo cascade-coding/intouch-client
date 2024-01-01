@@ -98,6 +98,16 @@ export const postsSlice = createSlice({
       comment?.reply_counts && comment.reply_counts++;
     },
 
+    addNewReply: (state, action: PayloadAction<ReplyCommentType>) => {
+      const current = state.commentReplies.find(
+        (item) => item.replyTo === action.payload.comment
+      );
+
+      if (current) {
+        current.results.unshift(action.payload);
+      }
+    },
+
     setCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
       state.commentReplies = [...state.commentReplies, action.payload];
     },
@@ -132,6 +142,7 @@ export const {
   setCommentReplies,
   loadMoreCommentReplies,
   emptyCommentReplies,
+  addNewReply,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;

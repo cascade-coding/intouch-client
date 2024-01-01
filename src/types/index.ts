@@ -35,6 +35,7 @@ export type CommentType = {
 };
 
 export type ReplyCommentType = {
+  comment: string;
   id: string;
   profile: {
     id: string;
@@ -67,7 +68,6 @@ export type FollowProfilesType = {
   previous: null | string;
   results: [] | SuggestionType[];
 };
-
 
 export type UserType = {
   id: string;

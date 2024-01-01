@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { increaseReplyCounts } from "@/features/postsSlice";
+import { addNewReply, increaseReplyCounts } from "@/features/postsSlice";
 import { useDispatch } from "react-redux";
 import { privateApi } from "@/http";
 
@@ -17,7 +17,9 @@ const ReplyInput = ({ commentId }: { commentId: string }) => {
         comment_id: commentId,
         text,
       });
-      console.log(data);
+
+      dispatch(addNewReply(data));
+
       setText("");
     } catch (error) {
       console.log(error);
