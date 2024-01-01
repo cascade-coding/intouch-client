@@ -15,6 +15,7 @@ import CommentCard from "./comment-card";
 import React from "react";
 import LoadMoreComments from "./load-more-comments";
 import Reply from "./reply";
+import CommentInput from "./comment-input";
 
 const DialogPostCard = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,8 @@ const DialogPostCard = () => {
         </Button>
       </div>
       <section className="p-2 overflow-y-auto max-h-[500px] mt-6 hide-scrollbar">
+        <CommentInput />
+
         {dialogComments.results.map((comment) => (
           <React.Fragment key={comment.id}>
             <CommentCard comment={comment} showReplyBtn />
