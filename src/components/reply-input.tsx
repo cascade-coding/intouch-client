@@ -40,7 +40,7 @@ const ReplyInput = ({ commentId }: { commentId: string }) => {
           variant="outline"
           onClick={handleAddReply}
         >
-          Add
+          Reply
         </Button>
       </div>
     </>
