@@ -91,6 +91,13 @@ export const postsSlice = createSlice({
       ];
     },
 
+    addNewComment: (state, action: PayloadAction<CommentType>) => {
+      state.dialogComments.results = [
+        action.payload,
+        ...state.dialogComments.results,
+      ];
+    },
+
     setCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
       state.commentReplies = [...state.commentReplies, action.payload];
     },
@@ -125,7 +132,6 @@ export const postsSlice = createSlice({
     increaseReplyCounts: (state, action: PayloadAction<string>) => {
       const comments = state.dialogComments.results;
       const comment = comments.find((item) => item.id === action.payload);
-
       if (comment && comment.reply_counts !== undefined) {
         comment.reply_counts++;
       }
@@ -140,6 +146,7 @@ export const {
   setDialogPostId,
   setComments,
   setCommentsOnScroll,
+  addNewComment,
   setCommentReplies,
   loadMoreCommentReplies,
   emptyCommentReplies,

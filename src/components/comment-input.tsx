@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { addNewReply, increaseReplyCounts } from "@/features/postsSlice";
+import {
+  addNewComment,
+  addNewReply,
+  increaseReplyCounts,
+} from "@/features/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { privateApi } from "@/http";
 import { RootState } from "@/app/store";
@@ -21,7 +25,7 @@ const CommentInput = () => {
         post_id,
         text,
       });
-
+      dispatch(addNewComment(data));
       setText("");
     } catch (error) {
       console.log(error);
