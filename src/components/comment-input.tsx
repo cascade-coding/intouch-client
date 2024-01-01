@@ -35,7 +35,7 @@ const CommentInput = () => {
           placeholder="it's cool"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="rounded-none border-transparent border-b-border  focus:border-b-neutral-50 focus:!ring-0"
+          className="rounded-none border-transparent border-b-border  focus:border-b-neutral-50 focus:!ring-0 hide-scrollbar"
         />
         <Button
           size="sm"

@@ -33,6 +33,7 @@ const ReplyInput = ({ commentId }: { commentId: string }) => {
           placeholder="it's cool"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          className="hide-scrollbar"
         />
         <Button
           size="sm"
