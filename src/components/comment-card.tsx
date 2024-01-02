@@ -17,17 +17,34 @@ import Avatar from "./avatar";
 import HumanizeTime from "./humanize-time";
 
 import ReplyInput from "./reply-input";
+import { privateApi } from "@/http";
+import {
+  setCommentDislikeInfo,
+  setCommentLikeInfo,
+  setReplyDislikeInfo,
+  setReplyLikeInfo,
+} from "@/features/postsSlice";
+import { useDispatch } from "react-redux";
+import useToggleCommentLikeDislike from "@/hooks/use-toggle-comment-like-dislike";
 
 const CommentCard = ({
   comment,
   avatarSm = false,
   showReplyBtn = false,
+  replyTo = "",
 }: {
   comment: CommentType;
   avatarSm?: boolean;
   showReplyBtn?: boolean;
+  replyTo?: string;
 }) => {
   const [showReplyInput, setShowReplyInput] = useState(false);
+
+  const { toggleLike, toggleDisLike } = useToggleCommentLikeDislike({
+    comment_id: comment.id,
+    replyTo,
+    showReplyBtn,
+  });
 
   return (
     <div className="mt-6">
@@ -47,7 +64,10 @@ const CommentCard = ({
           <p className="text-sm mt-2">{comment.text}</p>
 
           <div className="flex gap-x-4 mt-2">
-            <button className="cursor-pointer flex items-center justify-center gap-2">
+            <button
+              className="cursor-pointer flex items-center justify-center gap-2"
+              onClick={toggleLike}
+            >
               {comment.user_liked ? <MdThumbUp /> : <MdOutlineThumbUp />}
               {comment.like_counts > 0 && (
                 <span className="text-muted-foreground text-xs">
@@ -55,8 +75,8 @@ const CommentCard = ({
                 </span>
               )}
             </button>
-            <button className="cursor-pointer">
-              {comment.user_liked ? <MdThumbDown /> : <MdOutlineThumbDown />}
+            <button className="cursor-pointer" onClick={toggleDisLike}>
+              {comment.user_disliked ? <MdThumbDown /> : <MdOutlineThumbDown />}
             </button>
 
             {showReplyBtn && (

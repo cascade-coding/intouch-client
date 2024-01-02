@@ -77,7 +77,12 @@ const Reply = ({ comment }: { comment: CommentType }) => {
         {replies && (
           <div className={`${showReplies ? "block" : "hidden"}`}>
             {replies.results.map((item) => (
-              <CommentCard key={item.id} comment={item} avatarSm={true} />
+              <CommentCard
+                key={item.id}
+                comment={item}
+                avatarSm={true}
+                replyTo={comment.id}
+              />
             ))}
 
             {replies.next && (
