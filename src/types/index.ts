@@ -27,6 +27,8 @@ export type CommentType = {
       username: string;
     };
   };
+  user_liked: boolean;
+  user_disliked: boolean;
   like_counts: number;
   dislike_counts: number;
   text: string;
@@ -45,6 +47,8 @@ export type ReplyCommentType = {
       username: string;
     };
   };
+  user_liked: boolean;
+  user_disliked: boolean;
   like_counts: number;
   dislike_counts: number;
   text: string;
