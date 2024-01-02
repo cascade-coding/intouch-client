@@ -98,6 +98,36 @@ export const postsSlice = createSlice({
       ];
     },
 
+    setCommentLikeInfo: (state, action: PayloadAction<string>) => {
+      const comment = state.dialogComments.results.find(
+        (item) => item.id === action.payload
+      );
+      if (comment) {
+        comment.user_liked = !comment.user_liked;
+
+        if (comment.user_disliked) comment.user_disliked = false;
+
+        comment.like_counts = comment.user_liked
+          ? comment.like_counts + 1
+          : comment.like_counts - 1;
+      }
+    },
+
+    setCommentDislikeInfo: (state, action: PayloadAction<string>) => {
+      const comment = state.dialogComments.results.find(
+        (item) => item.id === action.payload
+      );
+      if (comment) {
+        comment.user_disliked = !comment.user_disliked;
+
+        if (comment.user_liked) comment.user_liked = false;
+
+        comment.like_counts = comment.user_liked
+          ? comment.like_counts + 1
+          : comment.like_counts - 1;
+      }
+    },
+
     setCommentReplies: (state, action: PayloadAction<RepliesDataType>) => {
       state.commentReplies = [...state.commentReplies, action.payload];
     },
@@ -136,6 +166,56 @@ export const postsSlice = createSlice({
         comment.reply_counts++;
       }
     },
+
+    setReplyLikeInfo: (
+      state,
+      action: PayloadAction<{ replyTo: string; replyId: string }>
+    ) => {
+      const replyToComment = state.commentReplies.find(
+        (item) => item.replyTo === action.payload.replyTo
+      );
+
+      if (replyToComment) {
+        const current = replyToComment.results.find(
+          (item) => item.id === action.payload.replyId
+        );
+
+        if (!current) return;
+
+        current.user_liked = !current.user_liked;
+
+        if (current.user_disliked) current.user_disliked = false;
+
+        current.like_counts = current.user_liked
+          ? current.like_counts + 1
+          : current.like_counts - 1;
+      }
+    },
+
+    setReplyDislikeInfo: (
+      state,
+      action: PayloadAction<{ replyTo: string; replyId: string }>
+    ) => {
+      const replyToComment = state.commentReplies.find(
+        (item) => item.replyTo === action.payload.replyTo
+      );
+
+      if (replyToComment) {
+        const current = replyToComment.results.find(
+          (item) => item.id === action.payload.replyId
+        );
+
+        if (!current) return;
+
+        current.user_disliked = !current.user_disliked;
+
+        if (current.user_liked) current.user_liked = false;
+
+        current.like_counts = current.user_liked
+          ? current.like_counts + 1
+          : current.like_counts - 1;
+      }
+    },
   },
 });
 
@@ -147,11 +227,15 @@ export const {
   setComments,
   setCommentsOnScroll,
   addNewComment,
+  setCommentLikeInfo,
+  setCommentDislikeInfo,
   setCommentReplies,
   loadMoreCommentReplies,
   emptyCommentReplies,
   addNewReply,
   increaseReplyCounts,
+  setReplyLikeInfo,
+  setReplyDislikeInfo,
 } = postsSlice.actions;
 
 export default postsSlice.reducer;
