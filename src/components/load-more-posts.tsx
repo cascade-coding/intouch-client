@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { privateApi } from "@/http";
 import { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setPostsOnScroll } from "@/features/postsSlice";
+import { setPostsOnScroll } from "@/features/post-slice";
 
 const LoadMorePosts = () => {
   const [ref, inView] = useInView();

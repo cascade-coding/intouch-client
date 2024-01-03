@@ -1,5 +1,5 @@
 import { RootState } from "@/app/store";
-import { setPosts } from "@/features/postsSlice";
+import { setPosts } from "@/features/post-slice";
 import { privateApi } from "@/http";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";

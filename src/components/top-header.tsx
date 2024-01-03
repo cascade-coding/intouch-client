@@ -4,6 +4,7 @@ import { HomeIcon } from "@radix-ui/react-icons";
 import AvatarDropDown from "./avatar-dropdown";
 import Discover from "./discover";
 import { UserPlus } from "lucide-react";
+import AddNewPost from "./add-new-post";
 
 const TopHeader = () => {
   return (
@@ -20,6 +21,9 @@ const TopHeader = () => {
             </li>
             <li className="hidden md:block">
               <Discover />
+            </li>
+            <li className="">
+              <AddNewPost />
             </li>
 
             <li className="">

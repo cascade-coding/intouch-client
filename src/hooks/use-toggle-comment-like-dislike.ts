@@ -5,7 +5,7 @@ import {
   setCommentLikeInfo,
   setReplyDislikeInfo,
   setReplyLikeInfo,
-} from "@/features/postsSlice";
+} from "@/features/post-slice";
 
 import { privateApi } from "@/http";
 

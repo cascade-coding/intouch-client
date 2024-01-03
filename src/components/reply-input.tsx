@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { addNewReply, increaseReplyCounts } from "@/features/postsSlice";
+import { addNewReply, increaseReplyCounts } from "@/features/post-slice";
 import { useDispatch } from "react-redux";
 import { privateApi } from "@/http";
 

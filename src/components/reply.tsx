@@ -15,7 +15,7 @@ import { RootState } from "@/app/store";
 import {
   loadMoreCommentReplies,
   setCommentReplies,
-} from "@/features/postsSlice";
+} from "@/features/post-slice";
 
 import CommentCard from "./comment-card";
 

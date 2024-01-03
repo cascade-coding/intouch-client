@@ -10,7 +10,7 @@ import LoadingAnimation from "./loading-animation";
 
 import { privateApi } from "@/http";
 
-import { setCommentsOnScroll } from "@/features/postsSlice";
+import { setCommentsOnScroll } from "@/features/post-slice";
 
 const LoadMoreComments = () => {
   const [ref, inView] = useInView();

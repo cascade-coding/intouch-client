@@ -23,7 +23,7 @@ import {
   setCommentLikeInfo,
   setReplyDislikeInfo,
   setReplyLikeInfo,
-} from "@/features/postsSlice";
+} from "@/features/post-slice";
 import { useDispatch } from "react-redux";
 import useToggleCommentLikeDislike from "@/hooks/use-toggle-comment-like-dislike";
 

@@ -5,7 +5,7 @@ import {
   addNewComment,
   addNewReply,
   increaseReplyCounts,
-} from "@/features/postsSlice";
+} from "@/features/post-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { privateApi } from "@/http";
 import { RootState } from "@/app/store";

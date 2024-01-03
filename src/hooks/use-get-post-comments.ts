@@ -1,5 +1,5 @@
 import { RootState } from "@/app/store";
-import { emptyCommentReplies, setComments } from "@/features/postsSlice";
+import { emptyCommentReplies, setComments } from "@/features/post-slice";
 import { privateApi } from "@/http";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";

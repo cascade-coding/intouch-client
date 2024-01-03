@@ -10,7 +10,7 @@ import numeral from "numeral";
 import useTogglePostLike from "@/hooks/use-toggle-post-like";
 import PostContent from "./post-content";
 import { useDispatch } from "react-redux";
-import { setDialogPostId, setPostLikeInfo } from "@/features/postsSlice";
+import { setDialogPostId, setPostLikeInfo } from "@/features/post-slice";
 
 const PostCard = ({
   post,
