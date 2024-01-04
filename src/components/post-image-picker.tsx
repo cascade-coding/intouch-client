@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
-import { setChosenImages } from "@/features/upload-post-slice";
+import { removeImage, setChosenImages } from "@/features/upload-post-slice";
 
 const PostImagePicker = () => {
   const { toast } = useToast();
@@ -41,7 +41,7 @@ const PostImagePicker = () => {
     <div className="mt-4">
       <div className="">
         <label htmlFor="photos" className="w-max block">
-          <ImagePlus className="w-16 h-16 bg-primary/10 hover:bg-primary/20 rounded-md p-1 text-blue-600" />
+          <ImagePlus className="w-16 h-16 bg-primary/10 hover:bg-primary/20 rounded-md p-1 text-blue-600 cursor-pointer" />
         </label>
         <input
           type="file"
@@ -57,17 +57,18 @@ const PostImagePicker = () => {
       {/* preview chosen images*/}
       <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 mt-4">
         {chosenImages.map((image, index) => (
-          <div className="border relative rounded-md group cursor-pointer">
-            <img
-              key={index}
-              src={image}
-              alt={`Selected ${index + 1}`}
-              className="w-full object-contain rounded-md"
-            />
+          <div
+            className="border relative rounded-md group cursor-pointer flex items-center"
+            key={index}
+          >
+            <img src={image} className="w-full object-contain rounded-md" />
 
-            <div className="absolute right-0 w-full top-0  py-2 px-3 bg-black/60 justify-between hidden group-hover:flex">
+            <div className="absolute right-0 w-full top-0  py-2 px-3 bg-black/60 flex justify-between">
               <Pencil className="w-3 h-3 mr-2 hover:text-orange-600 cursor-pointer" />
-              <X className="w-3 h-3 hover:text-red-600 cursor-pointer" />
+              <X
+                className="w-3 h-3 hover:text-red-600 cursor-pointer"
+                onClick={() => dispatch(removeImage(index))}
+              />
             </div>
           </div>
         ))}
