@@ -6,7 +6,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
-import { removeImage, setChosenImages } from "@/features/upload-post-slice";
+import {
+  removeImage,
+  setChosenImages,
+  setCropImage,
+} from "@/features/upload-post-slice";
+import CropImage from "./crop-image";
 
 const PostImagePicker = () => {
   const { toast } = useToast();
@@ -64,7 +69,10 @@ const PostImagePicker = () => {
             <img src={image} className="w-full object-contain rounded-md" />
 
             <div className="absolute right-0 w-full top-0  py-2 px-3 bg-black/60 flex justify-between">
-              <Pencil className="w-3 h-3 mr-2 hover:text-orange-600 cursor-pointer" />
+              <Pencil
+                className="w-3 h-3 mr-2 hover:text-orange-600 cursor-pointer"
+                onClick={() => dispatch(setCropImage(index))}
+              />
               <X
                 className="w-3 h-3 hover:text-red-600 cursor-pointer"
                 onClick={() => dispatch(removeImage(index))}
@@ -73,6 +81,8 @@ const PostImagePicker = () => {
           </div>
         ))}
       </div>
+
+      <CropImage />
     </div>
   );
 };
