@@ -5,6 +5,7 @@ import AvatarDropDown from "./avatar-dropdown";
 import Discover from "./discover";
 import { UserPlus } from "lucide-react";
 import AddNewPost from "./add-new-post";
+import { ModeToggle } from "./toggle-mode";
 
 const TopHeader = () => {
   return (
@@ -19,17 +20,23 @@ const TopHeader = () => {
                 <HomeIcon className="w-6 h-6 hover:text-primary transition-all" />
               </Link>
             </li>
+
             <li className="hidden md:block">
               <Discover />
             </li>
-            <li className="">
+
+            <li>
               <AddNewPost />
             </li>
 
-            <li className="">
+            <li>
               <Link to="/users/follow/">
                 <UserPlus />
               </Link>
+            </li>
+
+            <li>
+              <ModeToggle />
             </li>
 
             <li className="hidden md:block">
