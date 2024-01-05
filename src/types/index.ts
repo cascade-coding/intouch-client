@@ -12,6 +12,7 @@ export type PostType = {
   user_disliked: boolean;
   like_counts: number;
   dislike_counts: number;
+  comment_counts: number;
   text: string | null;
   post_images: { id: string; image: string }[] | [];
   created_at: Date;

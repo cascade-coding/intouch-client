@@ -46,13 +46,15 @@ const DialogPostCard = () => {
           }}
         >
           {post.user_liked ? <MdThumbUp /> : <MdOutlineThumbUp />}
-          {numeral(post.like_counts).format("0a")}
+          {post.like_counts > 0 && numeral(post.like_counts).format("0a")}
         </Button>
         <Button
           variant="outline"
           className="flex items-center justify-center gap-2  flex-1"
         >
-          <MdOutlineModeComment /> Comment
+          <MdOutlineModeComment />
+          {post.comment_counts > 0 && numeral(post.comment_counts).format("0a")}
+          <span>Comment</span>
         </Button>
       </div>
       <section className="p-2 overflow-y-auto max-h-[500px] mt-6 hide-scrollbar">

@@ -1,5 +1,4 @@
 import { PostType } from "@/types";
-import { useState } from "react";
 import {
   MdOutlineThumbUp,
   MdThumbUp,
@@ -36,7 +35,7 @@ const PostCard = ({
           }}
         >
           {post.user_liked ? <MdThumbUp /> : <MdOutlineThumbUp />}
-          {numeral(post.like_counts).format("0a")}
+          {post.like_counts > 0 && numeral(post.like_counts).format("0a")}
         </Button>
         <Button
           variant="outline"
@@ -45,7 +44,9 @@ const PostCard = ({
             setPostDialog(true), dispatch(setDialogPostId(post.id));
           }}
         >
-          <MdOutlineModeComment /> Comment
+          <MdOutlineModeComment />
+          {post.comment_counts > 0 && numeral(post.comment_counts).format("0a")}
+          <span>Comment</span>
         </Button>
       </div>
     </div>

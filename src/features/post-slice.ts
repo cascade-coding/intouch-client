@@ -100,6 +100,13 @@ export const postsSlice = createSlice({
         action.payload,
         ...state.dialogComments.results,
       ];
+
+      const post = state.posts.results.find(
+        (item) => item.id === state.dialogPostId
+      );
+      if (post) {
+        post.comment_counts = post.comment_counts + 1;
+      }
     },
 
     setCommentLikeInfo: (state, action: PayloadAction<string>) => {
