@@ -30,7 +30,7 @@ const ReplyInput = ({ commentId }: { commentId: string }) => {
     <>
       <div className="mt-3 w-full block">
         <Textarea
-          placeholder="it's cool"
+          placeholder="Add a reply..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           className="hide-scrollbar"

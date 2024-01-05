@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import {
-  addNewComment,
-  addNewReply,
-  increaseReplyCounts,
-} from "@/features/post-slice";
+import { addNewComment } from "@/features/post-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { privateApi } from "@/http";
 import { RootState } from "@/app/store";
@@ -36,7 +32,7 @@ const CommentInput = () => {
     <>
       <div className="mt-3 w-full block">
         <Textarea
-          placeholder="it's cool"
+          placeholder="Add a comment..."
           value={text}
           onChange={(e) => setText(e.target.value)}
           className="rounded-none border-transparent border-b-border  focus:border-b-neutral-50 focus:!ring-0 hide-scrollbar"
