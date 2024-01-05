@@ -32,8 +32,6 @@ const PostImagePicker = () => {
     }
 
     Array.from(files).forEach((file) => {
-      // Read each selected image file
-
       const reader = new FileReader();
       reader.onload = () => {
         dispatch(setChosenImages(reader.result as string));

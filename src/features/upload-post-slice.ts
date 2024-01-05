@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 type stateType = {
+  text: string;
   chosenImages: string[];
   cropImage: string | null;
 };
 
 const initialState: stateType = {
+  text: "",
   chosenImages: [],
   cropImage: null,
 };
@@ -43,6 +45,10 @@ export const uploadPostSlice = createSlice({
       state.chosenImages = images;
       state.cropImage = action.payload;
     },
+
+    setText: (state, action: PayloadAction<string>) => {
+      state.text = action.payload;
+    },
   },
 });
 
@@ -51,6 +57,7 @@ export const {
   removeImage,
   setCropImage,
   updateCroppedImage,
+  setText,
 } = uploadPostSlice.actions;
 
 export default uploadPostSlice.reducer;
