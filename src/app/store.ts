@@ -1,11 +1,15 @@
 import postsSlice from "@/features/post-slice";
+import profileSlice from "@/features/profile-slice";
 import uploadPostSlice from "@/features/upload-post-slice";
+import userSlice from "@/features/user-slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
     posts: postsSlice,
     uploadPost: uploadPostSlice,
+    profile: profileSlice,
+    user: userSlice,
   },
 });
 

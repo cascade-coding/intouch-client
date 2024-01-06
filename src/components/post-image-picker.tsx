@@ -1,9 +1,5 @@
 import { ImagePlus, Pencil, X } from "lucide-react";
-import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-
-import { Card, CardContent } from "@/components/ui/card";
-
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import {

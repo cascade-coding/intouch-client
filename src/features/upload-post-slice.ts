@@ -14,7 +14,7 @@ const initialState: stateType = {
 };
 
 export const uploadPostSlice = createSlice({
-  name: "posts",
+  name: "uploadPost",
   initialState,
   reducers: {
     setChosenImages: (state, action: PayloadAction<string>) => {

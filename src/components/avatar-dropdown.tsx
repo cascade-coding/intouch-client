@@ -17,7 +17,7 @@ const AvatarDropDown = () => {
       <DropdownMenuTrigger asChild>
         {user?.profile.profile_photo ? (
           <img
-            src={`https://res.cloudinary.com/dsmyfgxd1/${user.profile.profile_photo}`}
+            src={`${user.profile.profile_photo}`}
             alt="profile"
             width={28}
             height={28}

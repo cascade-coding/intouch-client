@@ -17,6 +17,7 @@ import Profile from "./routes/users/profile";
 import Root from "./routes/root";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
+import EditProfile from "./routes/users/edit-profile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "users/profile/:username",
         element: <Profile />,
+      },
+      {
+        path: "users/edit_profile",
+        element: <EditProfile />,
       },
     ],
   },

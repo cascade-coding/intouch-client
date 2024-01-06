@@ -83,3 +83,12 @@ export type UserType = {
     profile_photo: string;
   };
 };
+
+export type ProfileType = {
+  id: string;
+  profile_photo: string;
+  name: string;
+  bio: string;
+  gender: string | "Male" | "Female" | "Other";
+  date_of_birth: string | null;
+};
