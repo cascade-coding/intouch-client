@@ -81,6 +81,9 @@ export type UserType = {
   profile: {
     id: string;
     profile_photo: string;
+    total_followers: number;
+    total_following: number;
+    total_posts: number;
   };
 };
 
