@@ -1,4 +1,9 @@
-"use client";
+import { useEffect, useState } from "react";
+
+import { useSelector } from "react-redux";
+
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+
 import {
   Dialog,
   DialogContent,
@@ -9,25 +14,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { privateApi } from "@/http";
-import { SuggestionType } from "@/types";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
- 
-import { useEffect, useState } from "react";
-import React from "react";
-import numeral from "numeral";
-import { useRouter } from "next/navigation";
-import useHandleFollowing from "@/hooks/use-handle-following";
-import useGetTokenUser from "@/hooks/use-get-token-user";
+
 import SuggestionCardPrimary from "./suggestion-card-primary";
+
+import { SuggestionType } from "@/types";
+
+import { privateApi } from "@/http";
+
+import { RootState } from "@/app/store";
 
 const Discover = () => {
   const [search, setSearch] = useState("");
   const [profiles, setProfiles] = useState<SuggestionType[]>([]);
   const [notFound, setNotFound] = useState(false);
 
-  const { handleFollowing } = useHandleFollowing();
-  const { user } = useGetTokenUser();
+  const { user } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     const getData = setTimeout(async () => {

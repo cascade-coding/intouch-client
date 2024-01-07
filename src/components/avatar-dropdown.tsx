@@ -1,16 +1,23 @@
+import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+
+import { TbLogout } from "react-icons/tb";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
-import useGetTokenUser from "@/hooks/use-get-token-user";
-import { TbLogout } from "react-icons/tb";
+
+import { RootState } from "@/app/store";
+
 import useLogout from "@/hooks/use-logout";
 
 const AvatarDropDown = () => {
-  const { user } = useGetTokenUser();
+  const { user } = useSelector((state: RootState) => state.user);
+
   const { handleLogout } = useLogout();
   return (
     <DropdownMenu>

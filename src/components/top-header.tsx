@@ -1,13 +1,21 @@
-import HeaderLogo from "./header-logo";
 import { Link } from "react-router-dom";
-import { HomeIcon } from "@radix-ui/react-icons";
-import AvatarDropDown from "./avatar-dropdown";
-import Discover from "./discover";
+
 import { UserPlus } from "lucide-react";
-import AddNewPost from "./add-new-post";
+
+import { HomeIcon } from "@radix-ui/react-icons";
+
 import { ModeToggle } from "./toggle-mode";
 
+import HeaderLogo from "./header-logo";
+import AvatarDropDown from "./avatar-dropdown";
+import Discover from "./discover";
+import AddNewPost from "./add-new-post";
+
+import useGetTokenUser from "@/hooks/use-get-token-user";
+
 const TopHeader = () => {
+  useGetTokenUser();
+
   return (
     <>
       <header className="w-full h-16 flex items-center fixed top-0 left-0 z-10 border-secondary border-b dark:shadow dark:shadow-blue-900 bg-background">
