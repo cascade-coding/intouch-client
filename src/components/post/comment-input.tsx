@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { Textarea } from "./ui/textarea";
+import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
 import { addNewComment } from "@/features/post-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { privateApi } from "@/http";

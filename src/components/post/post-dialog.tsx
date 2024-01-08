@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import DialogPostCard from "./dialog-post-card";
 
@@ -15,7 +14,7 @@ const PostDialog = ({
         className="sm:max-w-2xl overflow-auto h-[90%] hide-scrollbar"
         id="post-dialog"
       >
-        <DialogPostCard  />
+        <DialogPostCard />
       </DialogContent>
     </Dialog>
   );

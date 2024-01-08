@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LoadingAnimation from "./loading-animation";
+import LoadingAnimation from "../shared/loading-animation";
 import { useInView } from "react-intersection-observer";
 import { privateApi } from "@/http";
 import { RootState } from "@/app/store";

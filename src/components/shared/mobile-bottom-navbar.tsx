@@ -1,8 +1,7 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HomeIcon } from "@radix-ui/react-icons";
 import AvatarDropDown from "./avatar-dropdown";
-import Discover from "./discover";
+import Discover from "../discover/discover";
 
 const MobileBottomNavbar = () => {
   return (

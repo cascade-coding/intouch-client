@@ -1,8 +1,8 @@
-import MobileBottomNavbar from "@/components/mobile-bottom-navbar";
-import TopHeader from "@/components/top-header";
+import MobileBottomNavbar from "@/components/shared/mobile-bottom-navbar";
+import TopHeader from "@/components/shared/top-header";
 import useGetFollowProfiles from "@/hooks/use-get-follow-profiles";
-import SuggestionCard from "@/components/suggestion-card";
-import LoadMoreSuggestions from "@/components/load-more-suggestions";
+import SuggestionCard from "@/components/suggestion/suggestion-card";
+import LoadMoreSuggestions from "@/components/suggestion/load-more-suggestions";
 
 const Follow = () => {
   const { suggestions, setSuggestions, loading } = useGetFollowProfiles();

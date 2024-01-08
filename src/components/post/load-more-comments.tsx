@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 import { RootState } from "@/app/store";
 
-import LoadingAnimation from "./loading-animation";
+import LoadingAnimation from "../shared/loading-animation";
 
 import { privateApi } from "@/http";
 

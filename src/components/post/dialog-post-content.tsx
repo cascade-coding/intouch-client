@@ -1,6 +1,6 @@
 import { PostType } from "@/types";
 import { RefObject, useRef, useState } from "react";
-import Avatar from "./avatar";
+import Avatar from "../shared/avatar";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 

@@ -4,7 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import Auth from "./routes/auth/auth";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 import { Toaster } from "./components/ui/toaster";
 import ReSendActivationEmail from "./routes/auth/resend-activation-email";
 import PasswordReset from "./routes/auth/password-reset";

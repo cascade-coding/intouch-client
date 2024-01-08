@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import numeral from "numeral";
+
 import {
   MdOutlineThumbUp,
   MdOutlineThumbDown,
@@ -8,23 +10,15 @@ import {
   MdThumbDown,
 } from "react-icons/md";
 
-import numeral from "numeral";
 
 import { CommentType } from "@/types";
 
-import Avatar from "./avatar";
+import Avatar from "../shared/avatar";
 
-import HumanizeTime from "./humanize-time";
+import HumanizeTime from "../shared/humanize-time";
 
 import ReplyInput from "./reply-input";
-import { privateApi } from "@/http";
-import {
-  setCommentDislikeInfo,
-  setCommentLikeInfo,
-  setReplyDislikeInfo,
-  setReplyLikeInfo,
-} from "@/features/post-slice";
-import { useDispatch } from "react-redux";
+
 import useToggleCommentLikeDislike from "@/hooks/use-toggle-comment-like-dislike";
 
 const CommentCard = ({

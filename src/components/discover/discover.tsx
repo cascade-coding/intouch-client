@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
-import SuggestionCardPrimary from "./suggestion-card-primary";
+import SuggestionCardPrimary from "../suggestion/suggestion-card-primary";
 
 import { SuggestionType } from "@/types";
 

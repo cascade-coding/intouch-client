@@ -1,10 +1,10 @@
 import { SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import numeral from "numeral";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { FollowProfilesType, SuggestionType } from "@/types";
 import useHandleFollowProfile from "@/hooks/use-handle-follow-profile";
-import Avatar from "./avatar";
+import Avatar from "../shared/avatar";
 
 type SuggestionCardType = {
   suggestion: SuggestionType;

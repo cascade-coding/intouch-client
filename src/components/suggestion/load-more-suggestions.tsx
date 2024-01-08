@@ -1,5 +1,5 @@
-import React, { SetStateAction, useEffect, useState } from "react";
-import LoadingAnimation from "./loading-animation";
+import { SetStateAction, useEffect, useState } from "react";
+import LoadingAnimation from "../shared/loading-animation";
 import { useInView } from "react-intersection-observer";
 import { FollowProfilesType } from "@/types";
 import { privateApi } from "@/http";

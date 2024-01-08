@@ -1,8 +1,8 @@
 import { PostType } from "@/types";
 import { RefObject, useRef, useState } from "react";
 import FsLightbox from "fslightbox-react";
-import Avatar from "./avatar";
-import HumanizeTime from "./humanize-time";
+import Avatar from "../shared/avatar";
+import HumanizeTime from "../shared/humanize-time";
 
 const PostContent = ({ post }: { post: PostType }) => {
   const textEl: RefObject<HTMLSpanElement> = useRef(null);

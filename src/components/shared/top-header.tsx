@@ -8,8 +8,8 @@ import { ModeToggle } from "./toggle-mode";
 
 import HeaderLogo from "./header-logo";
 import AvatarDropDown from "./avatar-dropdown";
-import Discover from "./discover";
-import AddNewPost from "./add-new-post";
+import Discover from "../discover/discover";
+import AddNewPost from "../post/add-new-post";
 
 import useGetTokenUser from "@/hooks/use-get-token-user";
 

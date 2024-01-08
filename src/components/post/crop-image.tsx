@@ -7,7 +7,7 @@ import { type Crop } from "react-image-crop";
 
 import "react-image-crop/dist/ReactCrop.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { updateCroppedImage } from "@/features/upload-post-slice";
 import { canvasPreview } from "@/lib/canvasPreview";
 

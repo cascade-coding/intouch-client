@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import TopHeader from "@/components/top-header";
-import MobileBottomNavbar from "@/components/mobile-bottom-navbar";
+import TopHeader from "@/components/shared/top-header";
+import MobileBottomNavbar from "@/components/shared/mobile-bottom-navbar";
 import useGetProfile from "@/hooks/use-get-profile";
 
 const Root = () => {

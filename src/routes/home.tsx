@@ -1,5 +1,5 @@
-import Posts from "@/components/posts";
-import TopSuggestions from "@/components/top-suggestions";
+import Posts from "@/components/post/posts";
+import TopSuggestions from "@/components/suggestion/top-suggestions";
 
 const Home = () => {
   return (

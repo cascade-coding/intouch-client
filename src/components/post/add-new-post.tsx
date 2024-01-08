@@ -1,3 +1,9 @@
+import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { PlusSquare } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,15 +14,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { PlusSquare } from "lucide-react";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
+
 import PostImagePicker from "./post-image-picker";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useToast } from "@/components/ui/use-toast";
+
 import { RootState } from "@/app/store";
+
 import { setText } from "@/features/upload-post-slice";
+
 import { privateApi } from "@/http";
-import { useState } from "react";
-import { useToast } from "./ui/use-toast";
+
 import { setNewPost } from "@/features/post-slice";
 
 const AddNewPost = () => {

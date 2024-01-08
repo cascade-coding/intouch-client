@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { ChevronDown, ChevronUp, CornerDownRight } from "lucide-react";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 import { CommentType } from "@/types";
 
