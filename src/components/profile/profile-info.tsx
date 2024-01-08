@@ -2,19 +2,25 @@ import numeral from "numeral";
 
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-
 import { Pencil } from "lucide-react";
 
+import { UserType } from "@/types";
+import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 
-const ProfileInfo = () => {
+type PropsType = {
+  user: UserType;
+};
+
+const ProfileInfo = ({ user }: PropsType) => {
+  const { user: currentUser } = useSelector((state: RootState) => state.user);
+
   const {
     username,
     profile: { profile_photo, total_followers, total_following, total_posts },
-  } = useSelector((state: RootState) => state.user.user);
+  } = user;
   return (
-    <div className="flex gap-x-4 sm:gap-x-6 items-center justify-center">
+    <div className="flex gap-x-4 sm:gap-x-6 items-center justify-center sm:justify-start">
       <div>
         {profile_photo ? (
           <img
@@ -25,7 +31,9 @@ const ProfileInfo = () => {
         ) : (
           <div className="w-16 h-16 md:w-36 md:h-36 rounded-full bg-blue-950 ring-4 ring-blue-700 relative">
             <Link to="/users/edit_profile/" className="absolute top-8 right-5">
-              <Pencil className="text-blue-300 cursor-pointer hover:text-blue-500 transition" />
+              {currentUser.username === username && (
+                <Pencil className="text-blue-300 cursor-pointer hover:text-blue-500 transition" />
+              )}
             </Link>
           </div>
         )}
