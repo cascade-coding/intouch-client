@@ -3,6 +3,7 @@ import { RefObject, useRef, useState } from "react";
 import FsLightbox from "fslightbox-react";
 import Avatar from "../shared/avatar";
 import HumanizeTime from "../shared/humanize-time";
+import { Link } from "react-router-dom";
 
 const PostContent = ({ post }: { post: PostType }) => {
   const textEl: RefObject<HTMLSpanElement> = useRef(null);
@@ -20,17 +21,21 @@ const PostContent = ({ post }: { post: PostType }) => {
 
   return (
     <>
-      <div className="mb-4">
-        <div className="flex items-center gap-4">
-          <Avatar
-            profile_photo={post.profile.profile_photo}
-            username={post.profile.user.username}
-          />
-
-          <h5>
-            {post.profile.user.username}
+      <div className="mb-8">
+        <div className="flex items-center">
+          <Link
+            to={`/users/profile/${post.profile.user.username}/`}
+            className="flex items-center gap-x-4"
+          >
+            <Avatar
+              profile_photo={post.profile.profile_photo}
+              username={post.profile.user.username}
+            />
+            <span>{post.profile.user.username}</span>
+          </Link>
+          <span>
             <HumanizeTime time={post.created_at} />
-          </h5>
+          </span>
         </div>
       </div>
       {post.text && (
