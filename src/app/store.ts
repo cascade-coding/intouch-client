@@ -1,4 +1,5 @@
 import postsSlice from "@/features/post-slice";
+import userProfileInfoSlice from "@/features/user-profile-info-slice";
 import profileSlice from "@/features/profile-slice";
 import uploadPostSlice from "@/features/upload-post-slice";
 import userSlice from "@/features/user-slice";
@@ -9,6 +10,7 @@ export const store = configureStore({
     posts: postsSlice,
     uploadPost: uploadPostSlice,
     profile: profileSlice,
+    profileInfo: userProfileInfoSlice,
     user: userSlice,
   },
 });

@@ -11,10 +11,22 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import DeleteMenu from "./delete-menu";
+import { useDispatch } from "react-redux";
+import { deletePost } from "@/features/post-slice";
+import { privateApi } from "@/http";
+import { decreaseTotalPosts } from "@/features/user-profile-info-slice";
 
 const DeletePost = ({ postId }: { postId: string }) => {
+  const dispatch = useDispatch();
+
   const handlePostDelete = async () => {
-    console.log(postId, "xxx");
+    dispatch(deletePost(postId));
+    dispatch(decreaseTotalPosts());
+    try {
+      await privateApi.post(`/delete_profile_posts/`, { postId });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

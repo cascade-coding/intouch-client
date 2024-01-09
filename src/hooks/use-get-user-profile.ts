@@ -1,7 +1,10 @@
+import { RootState } from "@/app/store";
 import { IMAGE_BASE } from "@/config";
+import { setUserProfile } from "@/features/user-profile-info-slice";
 import { privateApi } from "@/http";
 import { UserType } from "@/types";
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 export default function useGetUserProfile() {
@@ -9,7 +12,11 @@ export default function useGetUserProfile() {
 
   const [loading, setLoading] = useState(true);
 
-  const [userProfile, setUserProfile] = useState<UserType>();
+  const dispatch = useDispatch();
+
+  const { user: userProfile } = useSelector(
+    (state: RootState) => state.profileInfo
+  );
 
   const { username } = useParams();
 
@@ -36,7 +43,7 @@ export default function useGetUserProfile() {
       if (data.profile.profile_photo) {
         data.profile.profile_photo = `${IMAGE_BASE}${data.profile.profile_photo}`;
       }
-      setUserProfile(data);
+      dispatch(setUserProfile(data));
     } catch (error) {
       console.log(error);
     } finally {

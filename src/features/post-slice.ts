@@ -63,6 +63,12 @@ export const postsSlice = createSlice({
       state.posts.results = [action.payload, ...state.posts.results];
     },
 
+    deletePost: (state, action: PayloadAction<string>) => {
+      state.posts.results = state.posts.results.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+
     setPostLikeInfo: (state, action: PayloadAction<string>) => {
       const post = state.posts.results.find(
         (item) => item.id === action.payload
@@ -234,6 +240,7 @@ export const {
   setPosts,
   setPostsOnScroll,
   setNewPost,
+  deletePost,
   setPostLikeInfo,
   setDialogPostId,
   setComments,

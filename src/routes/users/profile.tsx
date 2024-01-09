@@ -13,7 +13,7 @@ const Profile = () => {
     <>
       <main className="mt-28">
         <div className="mx-auto px-4 sm:px-8 w-full max-w-5xl min-h-screen">
-          <ProfileInfo user={user} />
+          <ProfileInfo />
           <div className="h-[1px] bg-border my-6" />
 
           {/* load posts */}

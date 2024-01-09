@@ -1,14 +1,20 @@
-import { privateApi } from "@/http";
 import React, { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { useParams } from "react-router-dom";
+
+import { privateApi } from "@/http";
+
 import PostCard from "../post/post-card";
 import PostDialog from "../post/post-dialog";
 import LoadMorePosts from "../post/load-more-posts";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/app/store";
-import { setPosts } from "@/features/post-slice";
-import LoadingAnimation from "../shared/loading-animation";
-import { useParams } from "react-router-dom";
 import DeletePost from "./delete-post";
+import LoadingAnimation from "@/components/shared/loading-animation";
+
+import { RootState } from "@/app/store";
+
+import { setPosts } from "@/features/post-slice";
 
 type PropsType = {
   profileId: string;
