@@ -35,9 +35,7 @@ const ProfilePosts = ({ profileId }: PropsType) => {
   const getPosts = async () => {
     setLoading(true);
     try {
-      const { data } = await privateApi.post("/profile_posts/", {
-        profileId,
-      });
+      const { data } = await privateApi.get(`/profile_posts/${profileId}/`);
       dispatch(setPosts(data));
     } catch (error) {
       console.log(error);
