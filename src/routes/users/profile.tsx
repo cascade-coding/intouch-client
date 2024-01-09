@@ -1,4 +1,5 @@
 import ProfileInfo from "@/components/profile/profile-info";
+import ProfilePosts from "@/components/profile/profile-posts";
 import useGetUserProfile from "@/hooks/use-get-user-profile";
 
 const Profile = () => {
@@ -14,6 +15,10 @@ const Profile = () => {
         <div className="mx-auto px-4 sm:px-8 w-full max-w-5xl min-h-screen">
           <ProfileInfo user={user} />
           <div className="h-[1px] bg-border my-6" />
+
+          {/* load posts */}
+
+          <ProfilePosts profileId={user.profile.id} />
         </div>
       </main>
     </>
